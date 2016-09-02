@@ -1,14 +1,13 @@
 package data 
 
 import (
-    "time"
-    "github.com/dancannon/gorethink"
+    "gopkg.in/dancannon/gorethink.v2"
 )
 
 type Location struct {
     Name string `gorethink:"name"`
-    Location gorethink.Point `gorethink:"location"`
-    TTL time.Duration `gorethink:"ttl"`
+    Location gorethink.Term `gorethink:"location"`
+    TTL int64 `gorethink:"ttl"`
 }
 
 func GetLocations(lat float64, long float64, rad float64) ([]Location, error) {
