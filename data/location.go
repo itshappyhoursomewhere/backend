@@ -8,7 +8,7 @@ import (
 type Location struct {
     Name string `gorethink:"name"`
     Location gorethink.Point `gorethink:"location"`
-    Expires time.Duration
+    TTL time.Duration `gorethink:"ttl"`
 }
 
 func GetLocations(lat float64, long float64, rad float64) ([]Location, error) {
