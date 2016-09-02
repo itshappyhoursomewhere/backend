@@ -1,10 +1,8 @@
 package main
 
-type LocationResponse struct {
-    Name string `json:"name" xml:"Name"`
-    Lat float64 `json:"lat" xml:"Lat"`
-    Long float64 `json:"long" xml:"Long"`
-}
+import (
+    "github.com/itshappyhoursomewhere/backend/data"
+)
 
 type GetRequest struct {
     Lat float64 `json:"lat" xml:"Lat"`
@@ -12,5 +10,11 @@ type GetRequest struct {
 }
 
 type GetResponse struct {
-    Locations []LocationResponse `json:"locations" xml:"Locations"`
+    Locations []data.Location `json:"locations" xml:"Locations"`
 }
+
+type PutRequest struct {
+    Locations []data.Location `json:"locations" xml:"Locations"`
+}
+
+type PutResponse struct {}
