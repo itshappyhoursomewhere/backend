@@ -31,7 +31,7 @@ type Location struct {
 
 func (ctx *Context) GetLocations(lat float64, long float64, rad float64) ([]Location, error) {
     cursor, err := gorethink.DB("primary").Table("locations").GetNearest(
-        gorethink.Point(lat, long), 
+        gorethink.Point(long, lat), 
         gorethink.GetNearestOpts{
             Index: "location", 
             MaxResults: 1000, 

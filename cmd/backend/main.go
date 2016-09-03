@@ -4,6 +4,7 @@ import (
     "net/http"
     "github.com/Sirupsen/logrus"
     "github.com/ThatsMrTalbot/scaffold"
+    "golang.org/x/net/context"
     "github.com/ThatsMrTalbot/scaffold/encoding"
     "gopkg.in/dancannon/gorethink.v2"
     "github.com/itshappyhoursomewhere/backend/data"
@@ -15,7 +16,7 @@ type App struct {
 
 func NewApp() (*App, error) {
     rethink, err := gorethink.Connect(gorethink.ConnectOpts{
-        Address: "database",
+        Address: "localhost",
     })
 
     if err != nil {
@@ -44,12 +45,21 @@ func (app *App) StartExternal() {
     router := scaffold.New(dispatcher)
     router.AddHandlerBuilder(encoding.DefaultHandlerBuilder)
 
+    router.Options("/data.json", app.corsAllowed)
     router.Handle("/data.json", app.getData)
     http.ListenAndServe(":80", dispatcher)
 }
 
-func (app *App) getData(req GetRequest) (GetResponse, error) {
+func (app *App) corsAllowed(ctx context.Context, wr http.ResponseWriter, req *http.Request) {
+    wr.Header().Set("Access-Control-Allow-Origin", "*");
+    wr.Header().Set("Access-Control-Allow-Headers", "Accept, Content-Type");
+
+}
+
+func (app *App) getData(req GetRequest, wr http.ResponseWriter) (GetResponse, error) {
     locations, err := app.DataContext.GetLocations(req.Lat, req.Long, 2000);
+    wr.Header().Set("Access-Control-Allow-Origin", "*");
+    
     return GetResponse{Locations: locations}, err
 }
 

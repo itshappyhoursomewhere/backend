@@ -1,6 +1,7 @@
 package data
 
 import (
+    "fmt"
     "gopkg.in/dancannon/gorethink.v2/types"
 )
 

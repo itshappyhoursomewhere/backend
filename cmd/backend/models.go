@@ -5,8 +5,8 @@ import (
 )
 
 type GetRequest struct {
-    Lat float64 `json:"lat" xml:"lat"`
-    Long float64 `json:"long" xml:"long"`
+    Lat float64 `json:"lat" xml:"Lat"`
+    Long float64 `json:"long" xml:"Long"`
 }
 
 type GetResponse struct {
