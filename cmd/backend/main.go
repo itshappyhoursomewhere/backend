@@ -37,6 +37,7 @@ func (app *App) StartInternal() {
     router.AddHandlerBuilder(encoding.DefaultHandlerBuilder)
 
     router.Handle("/data.json", app.pushData)
+    router.Handle("/customerEmail.json", app.pushData)
     http.ListenAndServe(":6080", dispatcher)
 }
 
