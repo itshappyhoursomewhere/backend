@@ -17,5 +17,8 @@ func NewContext(rethink *gorethink.Session) *Context {
 func (ctx *Context) Initialize() {
     gorethink.DBCreate("primary").RunWrite(ctx.Rethink)
     gorethink.DB("primary").TableCreate("locations", gorethink.TableCreateOpts{PrimaryKey: "name"}).RunWrite(ctx.Rethink)
+    gorethink.DB("primary").TableCreate("emails", gorethink.TableCreateOpts{PrimaryKey: "emailaddress"}).RunWrite(ctx.Rethink)
     gorethink.DB("primary").Table("locations").IndexCreate("location", gorethink.IndexCreateOpts{Geo: true}).RunWrite(ctx.Rethink)
+    gorethink.DB("primary").Table("emails").IndexCreate("emails", gorethink.IndexCreateOpts{Geo: false}).RunWrite(ctx.Rethink)
+    
 }

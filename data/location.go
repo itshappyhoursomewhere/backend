@@ -29,6 +29,10 @@ type Location struct {
     TTL int64 `gorethink:"ttl" json:"ttl" xml:"TTL"`
 }
 
+type Emails struct {
+    Email string `gorethink:"email" json:"email" xml:"Email"`
+}
+
 func (ctx *Context) GetLocations(lat float64, long float64, rad float64) ([]Location, error) {
     cursor, err := gorethink.DB("primary").Table("locations").GetNearest(
         gorethink.Point(long, lat), 
