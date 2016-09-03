@@ -2,7 +2,6 @@ package data
 
 import (
     "gopkg.in/dancannon/gorethink.v2"
-    "gopkg.in/dancannon/gorethink.v2/types"
 )
 
 type lookupResult struct {
@@ -23,7 +22,7 @@ type Deal struct {
 
 type Location struct {
     Name string `gorethink:"name" json:"name" xml:"Name"`
-    Location types.Point `gorethink:"location" json:"geo" xml:"Geo`
+    Location Point `gorethink:"location" json:"geo" xml:"Geo`
     Phone string `gorethink:"phone" json:"phone" xml:"Phone`
     Website string `gorethink:"website" json:"website" xml:"Website`
     Deals []Deal `gorethink:"deals" json:"deals" xml:"Deals`
