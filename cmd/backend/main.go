@@ -56,20 +56,20 @@ func (app *App) corsAllowed(ctx context.Context, wr http.ResponseWriter, req *ht
 
 }
 
-func (app *App) getData(req GetRequest, wr http.ResponseWriter) (GetResponse, error) {
+func (app *App) getData(req GetLocationRequest, wr http.ResponseWriter) (GetLocationResponse, error) {
     locations, err := app.DataContext.GetLocations(req.Lat, req.Long, 2000);
     wr.Header().Set("Access-Control-Allow-Origin", "*");
     
-    return GetResponse{Locations: locations}, err
+    return GetLocationResponse{Locations: locations}, err
 }
 
-func (app *App) pushData(req PutRequest) (PutResponse, error) {
+func (app *App) pushData(req PutLocationRequest) (PutResponse, error) {
     err := app.DataContext.PushLocations(req.Locations...);
     return PutResponse{}, err
 }
 
-func (app *App) putEmail(req PutRequest) (PutResponse, error) {
-    err := app.DataContext.PutEmail(req.Emails...);
+func (app *App) putEmail(req PutEmailRequest) (PutResponse, error) {
+    err := app.DataContext.PutEmail(req.Email);
     return PutResponse{}, err
 }
 

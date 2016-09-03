@@ -17,7 +17,8 @@ type PutLocationRequest struct {
     Locations []data.Location `json:"locations" xml:"Locations"`
 }
 
-type PutEmailRequest  {
-    Emails []data.Email `json:"emails" xml:"Emails"`
+type PutEmailRequest struct {
+    Email data.Email `json:"email" xml:"Email"`
+}
 
 type PutResponse struct {}
