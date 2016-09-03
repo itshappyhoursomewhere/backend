@@ -18,12 +18,12 @@ type Active struct {
 
 type Deal struct {
     Active []Active `gorethink:"active" json:"active" xml:"Active"`
-    Extra string `gorethink:"extra" json:"extra" xml:"Extra"`
+    Description string `gorethink:"description" json:"description" xml:"Description"`
 }
 
 type Location struct {
     Name string `gorethink:"name" json:"name" xml:"Name"`
-    Location types.Point `gorethink:"location" json:"location" xml:"Location`
+    Location types.Point `gorethink:"location" json:"geo" xml:"Geo`
     Phone string `gorethink:"phone" json:"phone" xml:"Phone`
     Website string `gorethink:"website" json:"website" xml:"Website`
     Deals []Deal `gorethink:"deals" json:"deals" xml:"Deals`
