@@ -9,9 +9,24 @@ type lookupResult struct {
     Location Location `gorethink:"doc"`
 }
 
+
+type Active struct {
+    Day string `gorethink:"day" json:"day" xml:"Day"`
+    StartHour int64 `gorethink:"start" json:"start" xml:"Start"`
+    EndHour int64 `gorethink:"end" json:"end" xml:"End"`
+}
+
+type Deal struct {
+    Active []Active `gorethink:"active" json:"active" xml:"Active"`
+    Extra string `gorethink:"extra" json:"extra" xml:"Extra"`
+}
+
 type Location struct {
     Name string `gorethink:"name" json:"name" xml:"Name"`
     Location types.Point `gorethink:"location" json:"location" xml:"Location`
+    Phone string `gorethink:"phone" json:"phone" xml:"Phone`
+    Website string `gorethink:"website" json:"website" xml:"Website`
+    Deals []Deal `gorethink:"deals" json:"deals" xml:"Deals`
     TTL int64 `gorethink:"ttl" json:"ttl" xml:"TTL"`
 }
 

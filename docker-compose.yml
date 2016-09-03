@@ -6,5 +6,8 @@ services:
         image: happyhour/backend
         ports:
             - "80:80"
+            - "6080:6080"
+        links:
+            - database
     database:
         image: rethinkdb
