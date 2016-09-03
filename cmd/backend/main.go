@@ -58,6 +58,11 @@ func (app *App) pushData(req PutRequest) (PutResponse, error) {
     return PutResponse{}, err
 }
 
+func (app *App) putEmail(req PutRequest) (PutResponse, error) {
+    err := app.DataContext.PutEmail(req.Emails...);
+    return PutResponse{}, err
+}
+
 func main() {
     app, err := NewApp()
     if err != nil {
