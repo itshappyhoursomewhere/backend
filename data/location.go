@@ -23,7 +23,10 @@ type Deal struct {
 type Location struct {
     Name string `gorethink:"name" json:"name" xml:"Name"`
     Location Point `gorethink:"location" json:"geo" xml:"Geo`
+    Icon string `gorethink:"icon" json:"icon" xml:"Icon`
     Phone string `gorethink:"phone" json:"phone" xml:"Phone`
+    Filters []string `gorethink:"filter" json:"filter" xml:"Filter`
+    Description string `gorethink:"description" json:"description" xml:"Description`
     Website string `gorethink:"website" json:"website" xml:"Website`
     Deals []Deal `gorethink:"deals" json:"deals" xml:"Deals`
     TTL int64 `gorethink:"ttl" json:"ttl" xml:"TTL"`
