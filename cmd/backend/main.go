@@ -16,7 +16,7 @@ type App struct {
 
 func NewApp() (*App, error) {
     rethink, err := gorethink.Connect(gorethink.ConnectOpts{
-        Address: "localhost",
+        Address: "database",
     })
 
     if err != nil {
